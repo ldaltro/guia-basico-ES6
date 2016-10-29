@@ -93,7 +93,7 @@ Como foi dito anteriormente devemos criar um arquivo de configuração para espe
     };
     
 O código pode parecer meio complicado agora, então vamos por partes:
-* context: __dirname: ** representa onde o webpack deve rodar, neste caso nós usamos __dirname [o que no node.js quer dizer o diretório** atual](https://nodejs.org/docs/latest/api/globals.html)
+* context: __dirname: **representa onde o webpack deve rodar, neste caso nós usamos __dirname [o que no node.js quer dizer o diretórioatual](https://nodejs.org/docs/latest/api/globals.html)**
 *   devtool: debug ? "inline-sourcemap" : null: **verifica se estamos em modo de debug ou não, se estivermos em debug, o webpack vai ativar o inline-sourcemap que facilita o processo de desenvolvimento.**
 *   entry: "./js/app.js": 
 *   output: {
