@@ -460,7 +460,7 @@ O ES6 oferece getters e setters nas suas classes:
 
 ***Herança***
 
-Para fazer herança em ES6 usamos a keyword **exentds**
+Para fazer herança em ES6 usamos a keyword **extends**
 
     class Animal {
       constructor(nome) {
