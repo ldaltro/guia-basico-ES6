@@ -397,6 +397,7 @@ A melhor parte das arrow functions é que elas guardam o contexto this do seu va
     af.mostraCapitais(["Pretória","Cidade do Cabo","Bloemfontein"]);
 
 Não podemos ter acesso ao this em mostraCapitais porque ele não está no mesmo contexto do construtor da classe AfricaDoSul, para resolver isso nós podemos usar o método bind para conectar o contexto:
+
     function AfricaDoSul(intro) {
         this.intro = intro;
     }
