@@ -685,6 +685,7 @@ Também é possivel pegar importar de forma separada:
     console.log(tapioca.foo());// ERRO
 
 ***Export default***
+
 Podemos usar a keyword **default** para definir o que deve ser retornado por padrão no nosso modulo, é sempre uma boa ideia retornar apenas uma coisa no módulo dessa forma deixando explicito o que será exposto publicamente.Ex:
 
     const comida = 'tapioca';
