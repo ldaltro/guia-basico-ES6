@@ -1,7 +1,7 @@
 # Guia básico de ES6(ECMA Script 2015)
 Em junho de 2015 a [Ecma International](https://en.wikipedia.org/wiki/Ecma_International) finalizou a sexta versão da linguagem de programação ECMASCcript(popurlamente chamado de JavaScript). O objetivo deste guia é mostrar as principais features desse update junto com exemplos capazes de ilustrar seu uso.
 
->Sinta-se livre para contribuir mandando sugestões para o projeto!
+>Sinta-se livre para contribuir com o projeto!
 
 ## Suporte Atual
 Por ser uma tecnologia nova o ES6 não funciona nativamente em todos os browsers. É importante avaliar quais são os navegadores que o seu projeto deseja oferecer suporte. De acordo com dados do [Can I use](http://caniuse.com/#search=es6) neste exato momento a maioria dos browsers modernos já possui suporte as principais features do ES6.
