@@ -382,6 +382,7 @@ Ou ainda:
 **arrow functions e this**
 
 A melhor parte das arrow functions é que elas guardam o contexto this do seu valor léxico. Em ES5 nós tinhamos problemas do tipo:
+
     function AfricaDoSul(intro) {
         this.intro = intro;
     }
