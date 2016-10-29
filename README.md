@@ -134,6 +134,7 @@ Agora nos vamos chamar os dois arquivos indo pra app.js e fazendo:
 Se abrir-mos o index.html vamos ver que build possiu o codigo tanto de adeus quanto de ola, como mágica! Tudo isso acontece graças ao Common Js, um formato que também é usado no node para criação de modulos.Tabém vemos que não foi preciso rodar o webpack novamente, isso porque o comando --watch dado do exemplo passado, faz com que o webpack rode automaticamente toda vez que ocorra alguma mudança nos arquivos.
 
 **Webpack dev server**
+
 O webpack também oferece um servidor de desenvolvimento, para instalá-lo digite:
 
     npm install webpack-dev-server -g
