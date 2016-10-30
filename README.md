@@ -333,7 +333,7 @@ Note que mesmo assim não temos 100% de imutabilidade, podemos ainda alterar obj
 
 **let**
 
-O let functiona de forma semelhante ao var, mas respeitando o escopo em que foi declarado:
+O let funciona de forma semelhante ao var, mas respeitando o escopo em que foi declarado:
 
       if(true) {
         let a = 10;
@@ -362,7 +362,7 @@ No ES6 podemos simplesmente escrever:
      console.log(comida); // Reference Error
 
 ### Arrow functions
-Em ES5 funções anonimas são definidas assim:
+Em ES5 funções anônimas são definidas assim:
 
     var hey = function () {
         console.log('hey');
@@ -381,7 +381,7 @@ Ou ainda:
 
 **arrow functions e this**
 
-A melhor parte das arrow functions é que elas guardam o contexto this do seu valor léxico. Em ES5 nós tinhamos problemas do tipo:
+A melhor parte das arrow functions é que elas guardam o contexto this do seu valor léxico. Em ES5 nós tínhamos problemas do tipo:
 
     function AfricaDoSul(intro) {
         this.intro = intro;
