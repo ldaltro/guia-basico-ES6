@@ -76,13 +76,13 @@ Também vamos criar um **index.html** que chamar o nosso JavaScript gerado pelo 
 ```html
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Aprendendo webpack</title>
-  </head>
-  <body>
-    <script type="text/javascript" src='js/build.min.js'/>
-  </body>
+	<head>
+		<meta charset="utf-8">
+		<title>Aprendendo webpack</title>
+	</head>
+	<body>
+		<script src="js/build.min.js"></script>
+	</body>
 </html>
 ```
 
@@ -103,21 +103,21 @@ var debug = process.env.NODE_ENV !== "production";
 var webpack = require('webpack');
 
 module.exports = {
-  context: __dirname,
-  devtool: debug ? "inline-sourcemap" : null,
-  entry: "./js/app.js",
-  output: {
-    path: __dirname + "/js",
-    filename: "build.min.js"
-  },
-  plugins: debug ? [] : [
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-      mangle: false,
-      sourcemap: false
-    }),
-  ],
+	context: __dirname,
+	devtool: debug ? "inline-sourcemap" : null,
+	entry: "./js/app.js",
+	output: {
+		path: __dirname + "/js",
+		filename: "build.min.js"
+	},
+	plugins: debug ? [] : [
+		new webpack.optimize.DedupePlugin(),
+		new webpack.optimize.OccurenceOrderPlugin(),
+		new webpack.optimize.UglifyJsPlugin({
+			mangle: false,
+			sourcemap: false
+		}),
+	],
 };
 ```
 
@@ -126,14 +126,14 @@ O código pode parecer meio complicado agora, então vamos por partes:
 *   devtool: debug ? "inline-sourcemap" : null: **verifica se estamos em modo de debug ou não, se estivermos em debug, o webpack vai ativar o inline-sourcemap que facilita o processo de desenvolvimento.**
 *   entry: "./js/app.js":
 *   output: {
-    path: __dirname + "/js",
-    filename: "build.min.js"
-  }: **indica que o webpack deve criar um bundle em build.min.js e salvá-lo no diretório /js**
+		path: __dirname + "/js",
+		filename: "build.min.js"
+	}: **indica que o webpack deve criar um bundle em build.min.js e salvá-lo no diretório /js**
 * plugins: debug ? [] : [
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
-  ]: **Aplica o UglifyJs para mimificar nosso código se não estivermos em desenvolvimento.**
+		new webpack.optimize.DedupePlugin(),
+		new webpack.optimize.OccurenceOrderPlugin(),
+		new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
+	]: **Aplica o UglifyJs para mimificar nosso código se não estivermos em desenvolvimento.**
 
 Agora que nós temos um arquivo de configuração, podemos rodar o webpack novamente e ver os resultados, No terminal digite:
 
@@ -207,32 +207,32 @@ var debug = process.env.NODE_ENV !== "production";
 var webpack = require('webpack');
 
 module.exports = {
-  context: __dirname,
-  devtool: debug ? "inline-sourcemap" : null,
-  entry: "./js/app.js",
-  module: {
-    loaders: [{
-      test: /\.js?$/,
-      exclude: /(node_modules|bower_components)/,
-      loader: 'babel-loader',
-      query: {
-        presets: ['es2015', 'stage-0'],
-        plugins: ['transform-decorators-legacy', 'transform-class-properties'],
-      }
-    }]
-  },
-  output: {
-    path: __dirname + "/js",
-    filename: "build.min.js"
-  },
-  plugins: debug ? [] : [
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-      mangle: false,
-      sourcemap: false
-    }),
-  ],
+	context: __dirname,
+	devtool: debug ? "inline-sourcemap" : null,
+	entry: "./js/app.js",
+	module: {
+		loaders: [{
+			test: /\.js?$/,
+			exclude: /(node_modules|bower_components)/,
+			loader: 'babel-loader',
+			query: {
+				presets: ['es2015', 'stage-0'],
+				plugins: ['transform-decorators-legacy', 'transform-class-properties'],
+			}
+		}]
+	},
+	output: {
+		path: __dirname + "/js",
+		filename: "build.min.js"
+	},
+	plugins: debug ? [] : [
+		new webpack.optimize.DedupePlugin(),
+		new webpack.optimize.OccurenceOrderPlugin(),
+		new webpack.optimize.UglifyJsPlugin({
+			mangle: false,
+			sourcemap: false
+		}),
+	],
 };
 ```
 
@@ -258,9 +258,9 @@ Vamos entender o que cada coisa nesse exemplo faz:
 * exclude: /(node_modules|bower_components)/: **...todos menos os que estão em node_modules ou em bower_components(aka bibliotecas externas)**
 * loader: 'babel-loader': **o software que vai executar a ação**
 * query: {
-             presets: ['es2015', 'stage-0'],
-             plugins: ['transform-decorators-legacy', 'transform-class-properties'],
-           }: **oferece suporte ao es6, e a algumas features mais modernas como decorators e class properties**
+						 presets: ['es2015', 'stage-0'],
+						 plugins: ['transform-decorators-legacy', 'transform-class-properties'],
+					 }: **oferece suporte ao es6, e a algumas features mais modernas como decorators e class properties**
 
 Pronto! Agora nós temos um ambiente capaz de usar o ES6 em produção :-)
 
@@ -271,15 +271,15 @@ Ok depois dessa longa introdução, estamos prontos para começar a programar em
 Nas versões anteriores do JavaScript podíamos declarar valores de duas formas:
 
 ```javascript
-    x = 10;
-    var y = 12;
+x = 10;
+var y = 12;
 ```
 
 Quando declaramos uma variável sem **var** o seu escopo se torna global, logo:
 
 ```javascript
 function foo() {
-    x = 10;
+	x = 10;
 }
 foo();
 console.log(x); // vai mostrar 10 na tela
@@ -290,11 +290,11 @@ O exemplo acima mostra como declarar variáveis dessa forma é uma má ideia, va
 ***Para resolver este problema podemos colocar 'use strict' no topo do nosso código. Ex.:***
 
 ```javascript
-"use strict";
+'use strict';
 
 function foo() {
-  x = 10;
-  console.log(x);
+	x = 10;
+	console.log(x);
 }
 
 foo();
@@ -305,21 +305,21 @@ Ok mas e o **var**?Bem, usando **var** nós podemos evitar o escopo global logo:
 
 ```javascript
 function foo() {
-    var x = 10;
+	var x = 10;
 }
 foo();
-console.log(x);// ReferenceError: x is not defined
+console.log(x); // ReferenceError: x is not defined
 ```
 
 **var** parece uma opção muito boa, porém ele funciona de uma forma um diferente do esperado:
 
 ```javascript
 function foo() {
-        if(true) {
-            var x = 10;
-        }
-         console.log(x);
-    }
+	if (true) {
+		var x = 10;
+	}
+	console.log(x);
+}
 
 foo(); // 10
 ```
@@ -350,12 +350,12 @@ Constante em ES6 **não são realmente imutáveis**, **é possível criar um obj
 
 ```javascript
 const paises = {
-  brasil: "Rio de Janeiro",
-  eua: "Washington",
-  portugal: "Lisboa",
+	brasil: 'Rio de Janeiro',
+	eua: 'Washington',
+	portugal: 'Lisboa',
 };
 
-paises.brasil = "Brasilia";
+paises.brasil = 'Brasilia';
 
 console.log(paises.brasil); // Brasilia
 ```
@@ -364,33 +364,33 @@ Para corrigir isso usamos o Object.freeze(), que "congela" um objeto, impedindo 
 
 ```javascript
 const paises = Object.freeze({
-  brasil: "Rio de Janeiro",
-  eua: "Washington",
-  portugal: "Lisboa",
+	brasil: 'Rio de Janeiro',
+	eua: 'Washington',
+	portugal: 'Lisboa',
 });
 
-paises.brasil = "Brasilia";
+paises.brasil = 'Brasilia';
 
-console.log(paises.brasil); // "brasil" is read-only
+console.log(paises.brasil); // 'brasil' is read-only
 ```
 
 Note que mesmo assim não temos 100% de imutabilidade, podemos ainda alterar objetos que estejam dentro desse objeto:
 
 ```javascript
 const paises = Object.freeze({
-  brasil: "Rio de Janeiro",
-  eua: "Washington",
-  portugal: "Lisboa",
-  africaDoSul: {
-    a: "Pretória",
-    b: "Cidade do Cabo",
-    c: "Bloemfontein",
-  },
+	brasil: 'Rio de Janeiro',
+	eua: 'Washington',
+	portugal: 'Lisboa',
+	africaDoSul: {
+		a: 'Pretória',
+		b: 'Cidade do Cabo',
+		c: 'Bloemfontein',
+	},
 });
 
-paises.africaDoSul.a = "Brasilia";
+paises.africaDoSul.a = 'Brasilia';
 
-console.log(paises.africaDoSul.a);// Brasilia :(
+console.log(paises.africaDoSul.a); // Brasilia :(
 ```
 
 [A documentação da MDN possui uma gambiarra que resolve isso chamada deepFreeze()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze).
@@ -400,10 +400,10 @@ console.log(paises.africaDoSul.a);// Brasilia :(
 O let funciona de forma semelhante ao var, mas respeitando o escopo em que foi declarado:
 
 ```javascript
-  if(true) {
-    let a = 10;
-  }
-  console.log(a); // a is not defined
+if (true) {
+	let a = 10;
+}
+console.log(a); // a is not defined
 ```
 
 Obviamente, ainda podemos usar var em ES6.
@@ -413,20 +413,20 @@ Obviamente, ainda podemos usar var em ES6.
 IIFEs ou ***Immediately Invoked Function Expressions*** são expressões que são executadas assim que são definidas, elas ajudam a criar um escopo mais "privado" no seu código:
 
 ```javascript
-(function () {
-    var comida = 'Tapioca';
-    console.log(comida);
-}());// vai executar automaticamente e exibir Tapioca
+(function() {
+	var comida = 'Tapioca';
+	console.log(comida);
+}()); // vai executar automaticamente e exibir Tapioca
 
 console.log(comida); // Reference Error
-```javascript
+```
 
 No ES6 podemos simplesmente escrever:
 
 ```javascript
 {
-    const comida = 'Tapioca';
-    console.log(comida);
+	const comida = 'Tapioca';
+	console.log(comida);
 } // vai executar automaticamente e exibir Tapioca
 
 console.log(comida); // Reference Error
@@ -437,8 +437,8 @@ console.log(comida); // Reference Error
 Em ES5 funções anônimas são definidas assim:
 
 ```javascript
-var hey = function () {
-    console.log('hey');
+var hey = function() {
+	console.log('hey');
 };
 ```
 
@@ -446,7 +446,7 @@ Já no ES6 podemos também fazer desta forma:
 
 ```javascript
 const hey = () => {
-    console.log('hey');
+	console.log('hey');
 }
 ```
 
@@ -462,49 +462,49 @@ A melhor parte das arrow functions é que elas guardam o contexto this do seu va
 
 ```javascript
 function AfricaDoSul(intro) {
-    this.intro = intro;
+	this.intro = intro;
 }
 
-AfricaDoSul.prototype.mostraCapitais = function (lista) {
-    return lista.map(function (capital) {
-        return this.intro + capital; // ERRO this is undefined
-    });
+AfricaDoSul.prototype.mostraCapitais = function(lista) {
+	return lista.map(function(capital) {
+		return this.intro + capital; // ERRO this is undefined
+	});
 };
 
 var af = new AfricaDoSul('As capitais da Africa do Sul são');
-af.mostraCapitais(["Pretória","Cidade do Cabo","Bloemfontein"]);
+af.mostraCapitais(['Pretória', 'Cidade do Cabo', 'Bloemfontein']);
 ```
 
 Não podemos ter acesso ao this em mostraCapitais porque ele não está no mesmo contexto do construtor da classe AfricaDoSul, para resolver isso nós podemos usar o método bind para conectar o contexto:
 
 ```javascript
 function AfricaDoSul(intro) {
-    this.intro = intro;
+	this.intro = intro;
 }
 
-AfricaDoSul.prototype.mostraCapitais = function (lista) {
-    return lista.map(function (capital) {
-        return this.intro + capital;
-    }.bind(this));
+AfricaDoSul.prototype.mostraCapitais = function(lista) {
+	return lista.map(function(capital) {
+		return this.intro + capital;
+	}.bind(this));
 };
 
 var af = new AfricaDoSul('A capital da Africa do Sul é:');
-console.log(af.mostraCapitais(["Pretória","Cidade do Cabo","Bloemfontein"]));// Array [ "A capital da Africa do Sul é:Pretória", "A capital da Africa do Sul é:Cidade do  Cabo", "A capital da Africa do Sul é:Bloemfontein" ]
+console.log(af.mostraCapitais(['Pretória', 'Cidade do Cabo', 'Bloemfontein'])); // Array [ 'A capital da Africa do Sul é:Pretória', 'A capital da Africa do Sul é:Cidade do  Cabo', 'A capital da Africa do Sul é:Bloemfontein' ]
 ```
 
 Arrow functions já fazem isso por padrão, sendo assim:
 
 ```javascript
 function AfricaDoSul(intro) {
-    this.intro = intro;
+	this.intro = intro;
 }
 
-AfricaDoSul.prototype.mostraCapitais = function (lista) {
-    return lista.map((capital) => this.intro + capital);
+AfricaDoSul.prototype.mostraCapitais = function(lista) {
+	return lista.map((capital) => this.intro + capital);
 };
 
 var af = new AfricaDoSul('A capital da Africa do Sul é:');
-console.log(af.mostraCapitais(["Pretória","Cidade do Cabo","Bloemfontein"]));
+console.log(af.mostraCapitais(['Pretória', 'Cidade do Cabo', 'Bloemfontein']));
 ```
 
 Funciona perfeitamente!
@@ -515,17 +515,17 @@ O ES6 trouxe uma sintaxe de classes muito parecida com o que vemos em outras lin
 
 ```javascript
 class AfricaDoSul {
-  constructor(intro) {
-     this.intro = intro;
-  }
+	constructor(intro) {
+		this.intro = intro;
+	}
 
-    mostraCapitais = function (lista) {
-    return lista.map((capital) => this.intro + capital);
-  }
+	mostraCapitais = function(lista) {
+		return lista.map((capital) => this.intro + capital);
+	}
 }
 
 var af = new AfricaDoSul('A capital da Africa do Sul é:');
-console.log(af.mostraCapitais(["Pretória","Cidade do Cabo","Bloemfontein"]));
+console.log(af.mostraCapitais(['Pretória', 'Cidade do Cabo', 'Bloemfontein']));
 ```
 
 **Getters e Setters**
@@ -534,22 +534,21 @@ O ES6 oferece getters e setters nas suas classes:
 
 ```javascript
 class AfricaDoSul {
-  constructor() {
-    this._capitais = ["Pretória","Cidade do Cabo","Bloemfontein"];
-  }
+	constructor() {
+		this._capitais = ['Pretória', 'Cidade do Cabo', 'Bloemfontein'];
+	}
 
-  get capitais() {
-    return this._capitais.map((capital) => this._intro + capital);
-  }
+	get capitais() {
+		return this._capitais.map((capital) => this._intro + capital);
+	}
 
-  set intro(intro) {
-    this._intro = `De acordo com o usuario: ${intro}`;
-  }
+	set intro(intro) {
+		this._intro = `De acordo com o usuario: ${intro}`;
+	}
 }
-
 var af = new AfricaDoSul();
 af.intro = 'A capital da África do Sul é: ';
-console.log(af.capitais);//Array [ "De acordo com o usuário: A capital da África do Sul é: Pretória", "De acordo com o usuário: A capital da África do Sul é: Cidade do Cabo", "De acordo com o usuário: A capital da África do Sul é: Bloemfontein" ]
+console.log(af.capitais); //Array [ 'De acordo com o usuário: A capital da África do Sul é: Pretória', 'De acordo com o usuário: A capital da África do Sul é: Cidade do Cabo', 'De acordo com o usuário: A capital da África do Sul é: Bloemfontein' ]
 ```
 
 ***Herança***
@@ -558,27 +557,27 @@ Para fazer herança em ES6 usamos a keyword **extends**
 
 ```javascript
 class Animal {
-  constructor(nome) {
-     this.nome = nome;
-  }
-  nasce(){
-    console.log('nasceu');
-  }
-  reproduz() {
-    console.log('reproduziu');
-  }
-  morre() {
-    console.log('morreu');
-  }
+	constructor(nome) {
+		this.nome = nome;
+	}
+	nasce() {
+		console.log('nasceu');
+	}
+	reproduz() {
+		console.log('reproduziu');
+	}
+	morre() {
+		console.log('morreu');
+	}
 }
 
-class Human extends Animal{
-  constructor(nome) {
-    super(nome);
-  }
-  morre() {
-    console.log('no céu tem pão?');
-  }
+class Human extends Animal {
+	constructor(nome) {
+		super(nome);
+	}
+	morre() {
+		console.log('no céu tem pão?');
+	}
 }
 
 const joao = new Human('Joao');
@@ -595,17 +594,17 @@ JavaScript não oferece orientação a objetos clássica como Java, em JavaScrip
 
 ```javascript
 function AfricaDoSul(intro) {
-    this.intro = intro;
+	this.intro = intro;
 }
 ```
 
 É uma função que usaremos para simular o construtor de uma classe. Podemos adicionar métodos a essa classe usando a propriedade prototype:
 
 ```javascript
-AfricaDoSul.prototype.mostraCapitais = function (lista) {
-    return lista.map(function (capital) {
-        return this.intro + capital;
-    }.bind(this));
+AfricaDoSul.prototype.mostraCapitais = function(lista) {
+	return lista.map(function(capital) {
+		return this.intro + capital;
+	}.bind(this));
 };
 ```
 
@@ -620,18 +619,18 @@ Veja que no exemplo de getters e setters nós usamos a convenção _nomeDaVariav
 ```javascript
 const _nome = new WeakMap();
 class Pessoa {
-  constructor(nome) {
-    _nome.set(this,nome);
-  }
+	constructor(nome) {
+		_nome.set(this, nome);
+	}
 
-  falaNome() {
-    return _nome.get(this);
-  }
+	falaNome() {
+		return _nome.get(this);
+	}
 }
 
 const eu = new Pessoa('Lucas');
-console.log(eu.falaNome());// Lucas
-console.log(_nome.get(this));// undefined
+console.log(eu.falaNome()); // Lucas
+console.log(_nome.get(this)); // undefined
 ```
 
 ### Maps
@@ -639,14 +638,14 @@ console.log(_nome.get(this));// undefined
 Maps (também conhecidos como hashmaps ou hashs) são uma estrutura de dados que armazena valores em um formato de chave(key) e valor(value). Ex:
 
 ```javascript
-"use strict";
+'use strict';
 
 var paises = {
-  brasil: "Brasilia",
-  usa: "DC"
+	brasil: 'Brasilia',
+	usa: 'DC'
 };
 
-paises["usa"];// DC
+paises['usa']; // DC
 ```
 
 O problema de declarar hashes usando objetos é que objetos permitem o uso de propriedades como __ proto __ ou toString(), que podem tornar nosso código mais inseguro já que qualquer pessoa pode modificar o nossos objetos.
@@ -654,17 +653,17 @@ O problema de declarar hashes usando objetos é que objetos permitem o uso de pr
 Outro defeito da criação de maps com objetos é que iterar pelos seus elementos envolve uma sintaxe um pouco inconveniente:
 
 ```javascript
-"use strict";
+'use strict';
 
 var paises = {
-  brasil: "Brasilia",
-  usa: "DC"
+	brasil: 'Brasilia',
+	usa: 'DC'
 };
 
 var listaPaises = Object.keys(paises);
 
-listaPaises.map(function (pais) {
-  return console.log(pais);
+listaPaises.map(function(pais) {
+	return console.log(pais);
 }); // brasil usa
 ```
 
@@ -675,11 +674,11 @@ const paises = new Map();
 paises.set('brasil', 'Brasilia');
 paises.set('usa', 'DC');
 
-for(const [key, value] of paises) {
-  console.log(key, value);
+for (const [key, value] of paises) {
+	console.log(key, value);
 }
-//"brasil" "Brasilia"
-//"usa" "DC"
+// "brasil" "Brasilia"
+// "usa" "DC"
 ```
 
 ### Strings
@@ -698,7 +697,7 @@ console.log(isSubstring); // true
 
 No ES6 podemos usar o método include e evitar a gambiarra do exemplo anterior:
 
-```
+```javascript
 const comida = 'tapioca';
 console.log(comida.includes('tap')); // true
 ```
@@ -708,20 +707,20 @@ console.log(comida.includes('tap')); // true
 Em ES5 podemos repetir uma string usando um loop:
 
 ```javascript
-    var creu = 'creu';
-    var i = 0;
-    while(i < 3) {
-      creu += creu;
-      i++;
-    }
+var creu = 'creu';
+var i = 0;
+while (i < 3) {
+	creu += creu;
+	i++;
+}
 
-    console.log(creu); // "creucreucreucreucreucreucreucreu"
+console.log(creu); // "creucreucreucreucreucreucreucreu"
 ```
 
 No ES6 podemos usar o método repeat:
 
 ```javascript
-    console.log('creu'.repeat(3));
+console.log('creu'.repeat(3));
 ```
 
 ### Template Literals
@@ -729,23 +728,23 @@ No ES6 podemos usar o método repeat:
 Em ES5 strings não podem estar em mais de uma linha:
 
 ```javascript
-    var comida = 'oi
-    tudo bem?';
+var comida = 'oi
+              tudo bem ? ';
 ```
 
 Em ES6 podemos usar template literals para resolver este problema:
 
 ```javascript
-    const comida = `oi
-        tudo bem?`;
+const comida = `oi
+				tudo bem?`;
 ```
 
 Template literals também oferecem interpolação de valores, parecido com o que existe no ruby:
 
 ```javascript
-    const diaDaSemana = 'sexta-feira!';
-    const frase = `Hoje é ${diaDaSemana}!`;
-    console.log(frase); // Hoje é sexta-feira!!
+const diaDaSemana = 'sexta-feira!';
+const frase = `Hoje é ${diaDaSemana}!`;
+console.log(frase); // Hoje é sexta-feira!!
 ```
 
 ### Deconstructors
@@ -753,37 +752,43 @@ Template literals também oferecem interpolação de valores, parecido com o que
 Deconstructors permitem extrair valores de objetos e arrays para variáveis de forma mais fácil. A seguinte situação em ES5:
 
 ```javascript
-var diasDaSemana = ['domingo','segunda','terça','quarta','quinta','sexta'];
+var diasDaSemana = ['domingo', 'segunda', 'terça', 'quarta', 'quinta', 'sexta'];
 
 var domingo = diasDaSemana[0];
 var segunda = diasDaSemana[1];
 var terca = diasDaSemana[2];
 
-console.log(domingo);// domingo
-console.log(segunda);// segunda
-console.log(terca);// terça
+console.log(domingo); // domingo
+console.log(segunda); // segunda
+console.log(terca); // terça
 ```
 
 Pode ser simplificada em ES6 assim:
 
 ```javascript
-const diasDaSemana = ['domingo','segunda','terça','quarta','quinta','sexta'];
+const diasDaSemana = ['domingo', 'segunda', 'terça', 'quarta', 'quinta', 'sexta'];
 const [domingo, segunda, terca] = diasDaSemana;
 
-console.log(domingo);// domingo
-console.log(segunda);// segunda
-console.log(terca);// terça
+console.log(domingo); // domingo
+console.log(segunda); // segunda
+console.log(terca); // terça
 ```
 
 Também podemos fazer o mesmo com objetos:
 
 ```javascript
-const capitais = { brasil: 'Brasilia', eua: 'DC' };
+const capitais = {
+	brasil: 'Brasilia',
+	eua: 'DC'
+};
 
-const {brasil, eua} = capitais;
+const {
+	brasil,
+	eua
+} = capitais;
 
-console.log(brasil);// Brasilia
-console.log(eua);// DC
+console.log(brasil); // Brasilia
+console.log(eua); // DC
 ```
 
 ### Modulos
@@ -798,7 +803,7 @@ Para tornar alguma parte do nosso módulo público devemos exportá-lo com a key
 export const comida = 'tapioca';
 
 export function foo() {
-    return 'tapioca da boa';
+	return 'tapioca da boa';
 }
 ```
 
@@ -807,8 +812,8 @@ Imaginando que o exemplo anterior foi salvo em um arquivo tapioca.js podemos usa
 ```javascript
 import * as tapioca from './tapioca.js';
 
-console.log(tapioca.comida);// tapioca
-console.log(tapioca.foo());// tapioca da boa
+console.log(tapioca.comida); // tapioca
+console.log(tapioca.foo()); // tapioca da boa
 ```
 
 Também é possivel pegar importar de forma separada:
@@ -816,8 +821,8 @@ Também é possivel pegar importar de forma separada:
 ```javascript
 import comida tapioca from './tapioca.js';
 
-console.log(comida);// tapioca
-console.log(tapioca.foo());// ERRO
+console.log(comida); // tapioca
+console.log(tapioca.foo()); // ERRO
 ```
 
 ***Export default***
@@ -827,19 +832,24 @@ Podemos usar a keyword **default** para definir o que deve ser retornado por pad
 ```javascript
 const comida = 'tapioca';
 const preco = 1.0;
+
 function foo() {
-    return `tapioca da boa só ${preco} real`;
+	return `tapioca da boa só ${preco} real`;
 }
-export defailt const api = {
-    comida,
-    foo
+export defailt
+const api = {
+	comida,
+	foo
 }
 ```
 
 Fica possível importar com destructors:
 
 ```javascript
-import { comida,foo } from './tapioca';
+import {
+	comida,
+	foo
+} from './tapioca';
 ```
 
 Ou mesmo:
@@ -856,22 +866,22 @@ No ES5 se fosse necessário cria uma função com parâmetros opcionais, teríam
 
 ```javascript
 function comida(nome) {
-    nome = nome || 'tapioca';
-    return  nome;
+	nome = nome || 'tapioca';
+	return nome;
 }
 
-console.log(comida());// tapioca
+console.log(comida()); // tapioca
 console.log(comida('pizza')); //pizza
 ```
 
 Em ES6 podemos declarar parâmetros opcionais como no Python:
 
 ```javascript
-function comida(nome='tapioca') {
-    return  nome;
+function comida(nome = 'tapioca') {
+	return nome;
 }
 
-console.log(comida());// tapioca
+console.log(comida()); // tapioca
 console.log(comida('pizza')); //pizza
 ```
 
@@ -881,28 +891,28 @@ Se tivermos uma função com um número de indefinido de parâmetros devemos faz
 
 ```javascript
 function capitais() {
-    for (var i=0; i < arguments.length; i++) {
-        console.log(arguments[i]);
-    }
+	for (var i = 0; i < arguments.length; i++) {
+		console.log(arguments[i]);
+	}
 }
 
 capitais('Brasilia');
 
-capitais("Pretória","Cidade do Cabo","Bloemfontein");
+capitais("Pretória", "Cidade do Cabo", "Bloemfontein");
 ```
 
 Já em ES6:
 
 ```javascript
 function capitais(...args) {
-    for (const arg of args) {
-        console.log(arg);
-    }
+	for (const arg of args) {
+		console.log(arg);
+	}
 }
 
 capitais('Brasilia');
 
-capitais("Pretória","Cidade do Cabo","Bloemfontein");
+capitais('Pretória', 'Cidade do Cabo', 'Bloemfontein');
 ```
 
 ### Operador Spread
@@ -910,21 +920,21 @@ capitais("Pretória","Cidade do Cabo","Bloemfontein");
 É possível concatenar arrays em ES5 com o método concat. Ex.:
 
 ```javascript
-var capitais = ["Cidade do Cabo", "Bloemfontein"];
+var capitais = ['Cidade do Cabo', 'Bloemfontein'];
 
-var capitaisCompletas = ["Pretória"].concat(capitais);
+var capitaisCompletas = ['Pretória'].concat(capitais);
 
-console.log(capitaisCompletas); //Array [ "Pretória", "Cidade do Cabo", "Bloemfontein" ]
+console.log(capitaisCompletas); // Array [ 'Pretória', 'Cidade do Cabo', 'Bloemfontein' ]
 ```
 
 É possivel concatenar arrays em ES6 com o operador spread ... Ex.:
 
 ```javascript
-const capitais = ["Cidade do Cabo","Bloemfontein"];
+const capitais = ['Cidade do Cabo', 'Bloemfontein'];
 
-const capitaisCompletas = ["Pretória", ...capitais];
+const capitaisCompletas = ['Pretória', ...capitais];
 
-console.log(capitaisCompletas); //Array [ "Pretória", "Cidade do Cabo", "Bloemfontein" ]
+console.log(capitaisCompletas); // Array [ 'Pretória', 'Cidade do Cabo', 'Bloemfontein' ]
 ```
 
 ### Promises
@@ -932,29 +942,29 @@ console.log(capitaisCompletas); //Array [ "Pretória", "Cidade do Cabo", "Bloemf
 Em ES5 nós usávamos callbacks (funções passadas como argumento de outra função), isso podia gerar código assim:
 
 ```javascript
-    func1(function (value1) {
-        func2(value1, function (value2) {
-            func3(value2, function (value3) {
-                func4(value3, function (value4) {
-                    func5(value4, function (value5) {
-                        // Faz alguma coisa com o valor 5
-                    });
-                });
-            });
-        });
-    });
+func1(function(value1) {
+	func2(value1, function(value2) {
+		func3(value2, function(value3) {
+			func4(value3, function(value4) {
+				func5(value4, function(value5) {
+					// Faz alguma coisa com o valor 5
+				});
+			});
+		});
+	});
+});
 ```
 
 Esse é o chamado [callback hell](http://callbackhell.com/), para evitar esse tipo de problema existem as promises. O exemplo anterior com promises ficaria assim:
 
 ```javascript
 func1(value1)
-    .then(func2)
-    .then(func3)
-    .then(func4)
-    .then(func5, value5 => {
-        // Do something with value 5
-    });
+	.then(func2)
+	.then(func3)
+	.then(func4)
+	.then(func5, value5 => {
+		// Faz alguma coisa com o valor
+	});
 ```
 
 Diversas bibliotecas como a [bluebird](https://github.com/petkaantonov/bluebird) trouxeram promises para o ES5, mas agora com o ES6 podemos usá-las de forma nativa.
@@ -967,27 +977,29 @@ Promises possuem dois **handlers** resolve(para quando a promise não retorna ne
 import $ from 'jquery';
 
 const urls = [
-  '/api/commits',
-  '/api/issues/opened',
-  '/api/issues/assigned',
-  '/api/issues/completed',
-  '/api/issues/comments',
-  '/api/pullrequests'
+	'/api/commits',
+	'/api/issues/opened',
+	'/api/issues/assigned',
+	'/api/issues/completed',
+	'/api/issues/comments',
+	'/api/pullrequests'
 ];
 
 const promises = urls.map((url) => {
-  return new Promise((resolve, reject) => {
-    $.ajax({ url: url })
-      .done((data) => {
-        resolve(data);
-      });
-  });
+	return new Promise((resolve, reject) => {
+		$.ajax({
+				url: url
+			})
+			.done((data) => {
+				resolve(data);
+			});
+	});
 });
 
 Promise.all(promises)
-  .then((results) => {
-    // Faz alguma coisa com o resultado das promises
- });
+	.then((results) => {
+		// Faz alguma coisa com o resultado das promises
+	});
 ```
 
 > No exemplo anterior estamos usando o jQuery($) pra fazer requisições AJAX não se esqueça que podemos instalar bibliotecas externas com a ajuda do npm mesmo no front end. Para instalar o jQuery no nosso projeto webpack simplemente use **npm install jquery --save**
@@ -998,10 +1010,10 @@ Outra forma de evitar o callback hell são os generators, eles são funções qu
 
 ```javascript
 function* capitais() {
-    yield 'Pretoria';
-    yield 'Brasilia';
-    yield 'DC';
-    yield 'Lisboa';
+	yield 'Pretoria';
+	yield 'Brasilia';
+	yield 'DC';
+	yield 'Lisboa';
 }
 
 var generator = capitais();
@@ -1015,10 +1027,10 @@ Generators são ideais para código assíncrono:
 
 ```javascript
 function* getData() {
-    const api1 = yield request('http://some_api/item1');
-    const dadosApi1  = JSON.parse(entry1);
-    var api2 = yield request('http://some_api/item2');
-    var dadosApi2  = JSON.parse(entry2);
+	const api1 = yield request('http://some_api/item1');
+	const dadosApi1 = JSON.parse(entry1);
+	var api2 = yield request('http://some_api/item2');
+	var dadosApi2 = JSON.parse(entry2);
 }
 ```
 
@@ -1030,16 +1042,16 @@ Async e Await fazem parte do ES7 e são uma ótima forma de fazer código assín
 import request from 'request';
 
 function getJSON(url) {
-  return new Promise((resolve, reject) => {
-    request(url, (error, response, body) => {
-      resolve(body);
-    });
-  });
+	return new Promise((resolve, reject) => {
+		request(url, (error, response, body) => {
+			resolve(body);
+		});
+	});
 }
 
 async function main() {
-  const data = await getJSON();
-  console.log(data); // Vai mostrar os dados da requisição
+	const data = await getJSON();
+	console.log(data); // Vai mostrar os dados da requisição
 }
 
 main();
