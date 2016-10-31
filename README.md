@@ -937,7 +937,7 @@ Em ES5 nós usávamos callbacks (funções passadas como argumento de outra fun�
             func3(value2, function (value3) {
                 func4(value3, function (value4) {
                     func5(value4, function (value5) {
-                        // Do something with value 5
+                        // Faz alguma coisa com o valor 5
                     });
                 });
             });
