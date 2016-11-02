@@ -44,7 +44,7 @@ console.log(hello);
 
 ## Montando um ambiente de desenvolvimento com Babel
 
-Atualmente o Babel deixou de dar suporte ao babel-standalone o seu projeto que permitia usá-lo apenas colocando uma biblioteca .js em uma tag <script>. Hoje em dia devemos usar uma ferramenta para gerenciar o processo de conversão, neste guia daremos suporte ao Webpack. [Para outras ferramentas veja a documentação oficial do projeto](http://babeljs.io/docs/setup/#installation).
+Atualmente o Babel deixou de dar suporte ao babel-standalone o seu projeto que permitia usá-lo apenas colocando uma biblioteca .js em uma tag `<script>`. Hoje em dia devemos usar uma ferramenta para gerenciar o processo de conversão, neste guia daremos suporte ao Webpack. [Para outras ferramentas veja a documentação oficial do projeto](http://babeljs.io/docs/setup/#installation).
 
 ## Webpack
 
