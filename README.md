@@ -2,7 +2,7 @@
 
 Em junho de 2015 a [Ecma International](https://en.wikipedia.org/wiki/Ecma_International) finalizou a sexta versão da linguagem de programação ECMAScript  (popularmente chamado de JavaScript). O objetivo deste guia é mostrar as principais features desse update junto com maneiras de configurar um ambiente de desenvolvimento que habilite seu uso em produção.
 
-> Sinta-se livre para contribuir com o projeto!
+> Sinta-se livre para contribuir com o projeto!Sugestões e PRs são sempre bem vindas!
 
 ## Suporte Atual
 
