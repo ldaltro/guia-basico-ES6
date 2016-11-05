@@ -991,11 +991,11 @@ const urls = [
 const promises = urls.map((url) => {
 	return new Promise((resolve, reject) => {
 		$.ajax({
-				url: url
-			})
-			.done((data) => {
-				resolve(data);
-			});
+			url: url
+		})
+		.done((data) => {
+			resolve(data);
+		});
 	});
 });
 
