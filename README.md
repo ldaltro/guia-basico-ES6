@@ -2,7 +2,7 @@
 
 Em junho de 2015 a [Ecma International](https://en.wikipedia.org/wiki/Ecma_International) finalizou a sexta versão da linguagem de programação ECMAScript  (popularmente chamado de JavaScript). O objetivo deste guia é mostrar as principais features desse update junto com maneiras de configurar um ambiente de desenvolvimento que habilite seu uso em produção.
 
-> Sinta-se livre para contribuir com o projeto! Sugestões e PRs são sempre bem vindas!
+> Sinta-se livre para contribuir com o projeto! Sugestões e PRs são sempre bem vindos!
 
 ## Suporte Atual
 
@@ -14,7 +14,7 @@ Olhando dados atuais (final de 2016) uma boa parte dos usuários ainda utiliza b
 
 ## Babel
 
-O [Babel](https://babeljs.io/) é um programa que transforma JavaScript na sua sintaxe mais recente para ES5, seu funcionamento é bastante similar ao que é feito em linguagens como [TypeScript](https://www.typescriptlang.org/) e [CoffeeScript](http://coffeescript.org/). No passado o Babel era chamado de 6to5, mas pelo fato de  hoje em dia o projeto suporta features do ES7+ foi necessária a mudança para um nome mais apropriado.
+O [Babel](https://babeljs.io/) é um programa que transforma JavaScript na sua sintaxe mais recente para ES5, seu funcionamento é bastante similar ao que é feito em linguagens como [TypeScript](https://www.typescriptlang.org/) e [CoffeeScript](http://coffeescript.org/). No passado o Babel era chamado de 6to5, mas pelo fato de hoje em dia o projeto suportar features do ES7+ foi necessária a mudança para um nome mais apropriado.
 
 ### ES5, ES6, ES2015, ES2016, ESNext, ECMAScript Proposals?
 
@@ -58,21 +58,20 @@ Para instalar o webpack globalmente abra o seu terminal e digite:
 npm install webpack -g
 ```
 
-Crie um diretório para guardar o seu projeto e dentro dele, crie outro chamado **js** para guardar o javascript. Dentro  diretório principal do projeto inicie o node.js com:
+Crie um diretório para guardar o seu projeto e dentro dele, crie outro chamado **js** para guardar o javascript. Dentro do diretório principal do projeto inicie o node.js com:
 
 ```bash
 npm init
 ```
->Como bons desenvolvedores front end moderninhos,nós iremos usar npm para gerenciar nossas dependências. [Aprenda mais sobre o assunto aqui](http://blog.npmjs.org/post/101775448305/npm-and-front-end-packaging)
+>Como bons desenvolvedores front end moderninhos,nós iremos usar o npm para gerenciar nossas dependências. [Aprenda mais sobre o assunto aqui](http://blog.npmjs.org/post/101775448305/npm-and-front-end-packaging)
 
-crie um arquivo chamado **index.js**
-Dentro de index vamos colocar um código qualquer, por exemplo:
+Crie um arquivo chamado **index.js**. Dentro de index.js vamos colocar um código qualquer, por exemplo:
 
 ```javascript
 console.log('Olá mundo!');
 ```
 
-Também vamos criar um **index.html** que chamar o nosso JavaScript gerado pelo webpack:
+Também vamos criar um **index.html** que irá chamar o nosso JavaScript gerado pelo webpack:
 
 ```html
 <!DOCTYPE html>
@@ -136,7 +135,7 @@ O código pode parecer meio complicado agora, então vamos por partes:
 		new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
 	]: **Aplica o UglifyJs para mimificar nosso código se não estivermos em desenvolvimento.**
 
-Agora que nós temos um arquivo de configuração, podemos rodar o webpack novamente e ver os resultados, No terminal digite:
+Agora que nós temos um arquivo de configuração, podemos rodar o webpack novamente e ver os resultados. No terminal digite:
 
 ```bash
 NODE_ENV=production webpack --watch
@@ -169,7 +168,7 @@ require('./olamundo.js');
 require('./adeusmundo.js');
 ```
 
-Se abrirmos o index.html vamos ver que build possui o código tanto de adeus quanto de olá! Tudo isso acontece graças ao CommonJS, um formato que também é usado no node para criação de modulos. Também vemos que não foi preciso rodar o webpack novamente, isso porque o comando --watch dado do exemplo passado, faz com que o webpack rode automaticamente toda vez que ocorra alguma mudança nos arquivos.
+Se abrirmos o index.html vamos ver que build possui o código tanto de adeus quanto de olá! Tudo isso acontece graças ao CommonJS, um formato que também é usado no node para criação de módulos. Também vemos que não foi preciso rodar o webpack novamente, isso porque o comando --watch dado do exemplo passado, faz com que o webpack rode automaticamente toda vez que ocorra alguma mudança nos arquivos.
 
 **Webpack dev server**
 
@@ -288,7 +287,7 @@ foo();
 console.log(x); // vai mostrar 10 na tela
 ```
 
-O exemplo acima mostra como declarar variáveis dessa forma é uma má ideia, variáveis globais na maioria dos casos são algo bem ruim. Imagine uma aplicação onde um valor global é atualizado várias vezes e em várias funções diferentes, se tivermos um bug relacionado a este valor especifico, como vamos saber onde está a origem da falha? Em um projeto grande esse processo vai ser uma imensa perda de tempo, dificultando o trabalho do encarregado de dar manutenção no código. Como regra geral **não use variáveis globais**.
+O exemplo acima mostra como declarar variáveis dessa forma é uma má ideia, variáveis globais na maioria dos casos são algo bem ruim. Imagine uma aplicação onde um valor global é atualizado várias vezes e em várias funções diferentes, se tivermos um bug relacionado a este valor específico, como vamos saber onde está a origem da falha? Em um projeto grande esse processo vai ser uma imensa perda de tempo, dificultando o trabalho do encarregado de dar manutenção no código. Como regra geral **não use variáveis globais**.
 
 ***Para resolver este problema podemos colocar 'use strict' no topo do nosso código. Ex.:***
 
@@ -314,7 +313,7 @@ foo();
 console.log(x); // ReferenceError: x is not defined
 ```
 
-**var** parece uma opção muito boa, porém ele funciona de uma forma um diferente do esperado:
+**var** parece uma opção muito boa, porém ele funciona de uma forma um pouco diferente do esperado:
 
 ```javascript
 function foo() {
@@ -345,11 +344,11 @@ console.log(pi);
 pi = 10; // ERRO
 ```
 
-Constantes facilitam bastante o entendimento de um código, já que nós podemos ter certeza que um determinado valor nunca vai mudar depois de ser definido. ***Use const sempre que poder.***
+Constantes facilitam bastante o entendimento de um código, já que nós podemos ter certeza que um determinado valor nunca vai mudar depois de ser definido. ***Use const sempre que possível.***
 
 #### Maaass...não é tudo uma maravilha :(
 
-Constante em ES6 **não são realmente imutáveis**, **é possível criar um objeto com const e alteras seus valores**:
+Constantes em ES6 **não são realmente imutáveis**, **é possível criar um objeto com const e alterar seus valores**:
 
 ```javascript
 const paises = {
@@ -638,7 +637,7 @@ console.log(_nome.get(this)); // undefined
 
 ### Maps
 
-Maps (também conhecidos como hashmaps ou hashs) são uma estrutura de dados que armazena valores em um formato de chave (key) e valor (value). Ex:
+Maps (também conhecidos como hashmaps ou hashs) são uma estrutura de dados que armazenam valores em um formato de chave (key) e valor (value). Ex:
 
 ```javascript
 'use strict';
@@ -819,7 +818,7 @@ console.log(tapioca.comida); // tapioca
 console.log(tapioca.foo()); // tapioca da boa
 ```
 
-Também é possivel pegar importar de forma separada:
+Também é possivel importar de forma separada:
 
 ```javascript
 import comida tapioca from './tapioca.js';
@@ -865,7 +864,7 @@ tapioca.foo();
 
 ### Parâmetros opcionais
 
-No ES5 se fosse necessário cria uma função com parâmetros opcionais, teríamos que usar a seguinte gambiarra:
+No ES5 se fosse necessário criar uma função com parâmetros opcionais, teríamos que usar a seguinte gambiarra:
 
 ```javascript
 function comida(nome) {
