@@ -133,7 +133,7 @@ O código pode parecer meio complicado agora, então vamos por partes:
 		new webpack.optimize.DedupePlugin(),
 		new webpack.optimize.OccurenceOrderPlugin(),
 		new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
-	]: **Aplica o UglifyJs para mimificar nosso código se não estivermos em desenvolvimento.**
+	]: **Aplica o UglifyJs para minificar nosso código se não estivermos em desenvolvimento.**
 
 Agora que nós temos um arquivo de configuração, podemos rodar o webpack novamente e ver os resultados. No terminal digite:
 
@@ -143,7 +143,7 @@ NODE_ENV=production webpack --watch
 
 >Nós usamos NODE_ENV=production para indicar ao node que estamos em ambiente de produção, desta forma o webpack pode rodar o Uglify antes de montar a build.
 
-Se tudo ocorreu como planejado teremos um arquivo build.min.js com o código da nossa aplicação mimificado!
+Se tudo ocorreu como planejado teremos um arquivo build.min.js com o código da nossa aplicação minificado!
 
 **CommonJS**
 
