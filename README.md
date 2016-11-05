@@ -10,7 +10,7 @@ Por ser uma tecnologia nova o ES6 não funciona nativamente em todos os browsers
 
 ## Dando suporte a navegadores antigos
 
-Olhando dados atuais (final de 2016) uma boa parte dos usuários ainda utiliza browsers que não implementaram o ES6 por completo, mas felizmente a comunidade JavaScript criou uma série de ferramentas (transpilers) que possibilitam a conversão de JavaScript moderno para uma sintaxe mais antiga(geralmente ECMAScript 5). O transpiler mais usado no momento é o Babel (anteriormente conhecido como 6to5).
+Olhando dados atuais (final de 2016) uma boa parte dos usuários ainda utiliza browsers que não implementaram o ES6 por completo. Mas felizmente a comunidade JavaScript criou uma série de ferramentas (transpilers) que possibilitam a conversão de JavaScript moderno para uma sintaxe mais antiga (geralmente ECMAScript 5). O transpiler mais usado no momento é o Babel (anteriormente conhecido como 6to5).
 
 ## Babel
 
@@ -18,9 +18,9 @@ O [Babel](https://babeljs.io/) é um programa que transforma JavaScript na sua s
 
 ### ES5, ES6, ES2015, ES2016, ESNext, ECMAScript Proposals?
 
-Um dos grandes problemas da linguagem era que a sua evolução se dava de forma muito lenta (o ES5 por exemplo foi introduzido em 2009), uma das maneiras de sanar esta dificuldade encontrada pelo time responsavel pelo desenvolvimento do Javascript foi começar a criar pequenos updates anuais que seriam nomeados com o ano em que a especificação final foi liberada ao invés do padrão antigo, de versões seguindo uma ordem numérica simples. Além disso todas as mudanças que ainda não possuem uma especificação final são classificadas como ECMAScript Proposals.
+Um dos grandes problemas da linguagem era que a sua evolução se dava de forma muito lenta (o ES5 por exemplo foi introduzido em 2009). Uma das maneiras de sanar esta dificuldade encontrada pelo time de desenvolvimento do Javascript foi começar a criar pequenos updates anuais que seriam nomeados com o ano em que a especificação final foi liberada ao invés do padrão antigo, de versões seguindo uma ordem numérica simples. Além disso todas as mudanças que ainda não possuem uma especificação final são classificadas como ECMAScript Proposals.
 
-Como esta proposta foi dada quando já se falava sobre ES6 o novo nome não teve uma adesão muito grande logo, assim como nós chamamos ECMAScript de JavaScript, neste guia ES2015 e ES2016 serão chamados de ES6 e ES7, respectivamente.
+Como esta proposta foi dada quando já se falava sobre ES6, o novo nome não teve uma adesão muito grande logo. Assim como nós chamamos ECMAScript de JavaScript, neste guia ES2015 e ES2016 serão chamados de ES6 e ES7, respectivamente.
 
 ## Testando o Babel
 
@@ -48,7 +48,7 @@ Atualmente o Babel deixou de dar suporte ao babel-standalone o seu projeto que p
 
 ## Webpack
 
-O webpack é um ***module bundler***, um programa que serve para juntar vários recursos da sua aplicação em um só, assim como o [browserfy](http://browserify.org/). A vantagem do webpack sobre outras ferramentas é que com ele na maioria dos casos nós não precisamos usar um software como gulp ou grunt para fazer o processo de build da nossa aplicação. O webpack usa um arquivo que guarda todas as informações a respeito do que deve ser feito com os seus recursos chamado de [webpack.config.js](https://webpack.github.io/docs/configuration.html).
+O webpack é um ***module bundler***, um programa que serve para juntar vários recursos da sua aplicação em um só, assim como o [browserfy](http://browserify.org/). A vantagem do webpack sobre outras ferramentas é que na maioria dos casos nós não precisamos usar um software como gulp ou grunt para fazer o processo de build da nossa aplicação. O webpack usa um arquivo que guarda todas as informações a respeito do que deve ser feito com os seus recursos chamado de [webpack.config.js](https://webpack.github.io/docs/configuration.html).
 
 ### Tutorial básico de webpack
 
@@ -63,7 +63,7 @@ Crie um diretório para guardar o seu projeto e dentro dele, crie outro chamado 
 ```bash
 npm init
 ```
->Como bons desenvolvedores front end moderninhos,nós iremos usar o npm para gerenciar nossas dependências. [Aprenda mais sobre o assunto aqui](http://blog.npmjs.org/post/101775448305/npm-and-front-end-packaging)
+>Como bons desenvolvedores front end moderninhos, nós iremos usar o npm para gerenciar nossas dependências. [Aprenda mais sobre o assunto aqui](http://blog.npmjs.org/post/101775448305/npm-and-front-end-packaging)
 
 Crie um arquivo chamado **index.js**. Dentro de index.js vamos colocar um código qualquer, por exemplo:
 
@@ -172,7 +172,7 @@ Se abrirmos o index.html vamos ver que build possui o código tanto de adeus qua
 
 **Webpack dev server**
 
-O webpack também oferece um servidorzinho de arquivos estáticos para desenvolvimento, você pode instalá-lo com:
+O webpack também oferece um pequeno servidor de arquivos estáticos para desenvolvimento. Você pode instalá-lo com:
 
 ```bash
 npm install webpack-dev-server -g
@@ -184,19 +184,17 @@ E depois rode com:
 webpack-dev-server
 ```
 
-Se formos para http://localhost:8080/ podemos ver o nosso projeto rodando em um servidor web, a melhor parte disso é que com o comando:
+Se formos para http://localhost:8080/ podemos ver o nosso projeto rodando em um servidor web. A melhor parte disso é que com o comando abaixo, podemos programar normalmente e deixar o webpack-dev-server dar o refresh na página de forma automática.
 
 ```bash
 webpack-dev-server --inline --hot
 ```
 
-Podemos programar normalmente e deixar o webpack-dev-server dar o refresh na página de forma automática.
-
 ### Adicionando o Babel no seu webpack.config
 
 Com a configuração que nós temos agora ainda é impossível usar ES6 e dar suporte a navegadores antigos, para isso temos que adicionar o Babel ao nosso projeto com webpack.
 
-Primeiramente vamos instalar o Babel e as suas dependências:
+Primeiramente vamos instalar o Babel e suas dependências:
 
 ```bash
 npm install babel-core babel-loader node-libs-browser babel-preset-es2015 babel-plugin-transform-decorators-legacy babel-plugin-transform-class-properties babel-preset-stage-0 --save-dev
@@ -254,7 +252,7 @@ module: {
 }
 ```
 
-Vamos entender o que cada coisa nesse exemplo faz:
+Vamos entender o que cada configuração nesse exemplo faz:
 
 * test: /\.js?$/: **Procura por todos os arquivos que terminam em .js...**
 * exclude: /(node_modules|bower_components)/: **...todos menos os que estão em node_modules ou em bower_components(aka bibliotecas externas)**
@@ -264,10 +262,10 @@ Vamos entender o que cada coisa nesse exemplo faz:
 						 plugins: ['transform-decorators-legacy', 'transform-class-properties'],
 					 }: **oferece suporte ao es6, e a algumas features mais modernas como decorators e class properties**
 
-Pronto! Agora nós temos um ambiente capaz de usar o ES6 em produção :-)
+Pronto! Agora nós temos um ambiente capaz de usar o ES6 em produção. :-)
 
 ## Introdução ao ES6
-Ok depois de montar um ambiente, estamos prontos para começar a programar em ECMAScript 6. A partir de agora o tutorial será composto de pequenos exemplos com o objetivo de explicar algumas features da linguagem.
+Ok, depois de montar um ambiente estamos prontos para começar a programar em ECMAScript 6. Apartir de agora o tutorial será composto de pequenos exemplos com o objetivo de explicar algumas features da linguagem.
 
 ### Declarando variáveis em ES5
 Nas versões anteriores do JavaScript podíamos declarar valores de duas formas:
@@ -287,7 +285,7 @@ foo();
 console.log(x); // vai mostrar 10 na tela
 ```
 
-O exemplo acima mostra como declarar variáveis dessa forma é uma má ideia, variáveis globais na maioria dos casos são algo bem ruim. Imagine uma aplicação onde um valor global é atualizado várias vezes e em várias funções diferentes, se tivermos um bug relacionado a este valor específico, como vamos saber onde está a origem da falha? Em um projeto grande esse processo vai ser uma imensa perda de tempo, dificultando o trabalho do encarregado de dar manutenção no código. Como regra geral **não use variáveis globais**.
+O exemplo acima mostra como declarar variáveis dessa forma é uma má ideia. Variáveis globais na maioria dos casos são algo bem ruim. Imagine uma aplicação onde um valor global é atualizado várias vezes e em várias funções diferentes. Se tivermos um bug relacionado a este valor específico, como vamos saber onde está a origem da falha? Em um projeto grande esse processo vai ser uma imensa perda de tempo, dificultando o trabalho do encarregado de dar manutenção no código. Como regra geral **não use variáveis globais**.
 
 ***Para resolver este problema podemos colocar 'use strict' no topo do nosso código. Ex.:***
 
@@ -348,7 +346,7 @@ Constantes facilitam bastante o entendimento de um código, já que nós podemos
 
 #### Maaass...não é tudo uma maravilha :(
 
-Constantes em ES6 **não são realmente imutáveis**, **é possível criar um objeto com const e alterar seus valores**:
+Constantes em ES6 **não são realmente imutáveis**. **É possível criar um objeto com const e alterar seus valores**:
 
 ```javascript
 const paises = {
@@ -412,7 +410,7 @@ Obviamente, ainda podemos usar var em ES6.
 
 ### IIFEs
 
-IIFEs ou ***Immediately Invoked Function Expressions*** são expressões que são executadas assim que são definidas, elas ajudam a criar um escopo mais "privado" no seu código:
+IIFEs ou ***Immediately Invoked Function Expressions*** são expressões que são executadas assim que são definidas. Elas ajudam a criar um escopo mais "privado" no seu código:
 
 ```javascript
 (function() {
@@ -477,7 +475,7 @@ var af = new AfricaDoSul('As capitais da Africa do Sul são');
 af.mostraCapitais(['Pretória', 'Cidade do Cabo', 'Bloemfontein']);
 ```
 
-Não podemos ter acesso ao this em mostraCapitais porque ele não está no mesmo contexto do construtor da classe AfricaDoSul, para resolver isso nós podemos usar o método bind para conectar o contexto:
+Não podemos ter acesso ao this em mostraCapitais porque ele não está no mesmo contexto do construtor da classe AfricaDoSul. Para resolver isso nós podemos usar o método bind para conectar o contexto:
 
 ```javascript
 function AfricaDoSul(intro) {
@@ -592,7 +590,7 @@ joao.morre();
 
 ### No final ainda é prototype
 
-JavaScript não oferece orientação a objetos clássica como Java, em JavaScript não existem classes, nós definimos funções ou objetos e podemos expandi-los depois de sua criação. Ex:
+JavaScript não oferece orientação a objetos clássica como Java. Em JavaScript não existem classes, nós definimos funções ou objetos e podemos expandi-los depois de sua criação. Ex:
 
 ```javascript
 function AfricaDoSul(intro) {
@@ -610,7 +608,7 @@ AfricaDoSul.prototype.mostraCapitais = function(lista) {
 };
 ```
 
-Mesmo que incialmente pareça uma ideia bizarra comparando com a POO clássica, POO com prototype é vista como uma forma de escrever classes mais simples, mais poderosas e menos redundantes. [Veja mais sobre o assunto aqui](http://stackoverflow.com/questions/2800964/benefits-of-prototypal-inheritance-over-classical).
+Mesmo que inicialmente pareça uma ideia bizarra comparando com a POO clássica, POO com prototype é vista como uma forma de escrever classes mais simples, mais poderosas e menos redundantes. [Veja mais sobre o assunto aqui](http://stackoverflow.com/questions/2800964/benefits-of-prototypal-inheritance-over-classical).
 
 > As classes do ES6 são só ***syntax sugar*** em cima das prototypes, ainda é necessário entender os conceitos por trás disso tudo e até mesmo usar a sintaxe antiga.
 
@@ -741,7 +739,7 @@ const comida = `oi
 				tudo bem?`;
 ```
 
-Template literals também oferecem interpolação de valores, parecido com o que existe no ruby:
+Template literals também oferecem interpolação de valores, parecido com o que existe no Ruby:
 
 ```javascript
 const diaDaSemana = 'sexta-feira!';
@@ -793,7 +791,7 @@ console.log(brasil); // Brasilia
 console.log(eua); // DC
 ```
 
-### Modulos
+### Módulos
 
 Lembra do CommonJS (require) que nós vimos quando estávamos montando nosso ambiente com webpack? O ES6 trás a mesma feature nativamente com a keyword **import**
 
@@ -809,7 +807,7 @@ export function foo() {
 }
 ```
 
-Imaginando que o exemplo anterior foi salvo em um arquivo tapioca.js podemos usar o modulo tapioca em outro arquivo assim:
+Imaginando que o exemplo anterior foi salvo em um arquivo tapioca.js podemos usar o módulo tapioca em outro arquivo assim:
 
 ```javascript
 import * as tapioca from './tapioca.js';
@@ -829,7 +827,7 @@ console.log(tapioca.foo()); // ERRO
 
 ***Export default***
 
-Podemos usar a keyword **default** para definir o que deve ser retornado por padrão no nosso modulo, é sempre uma boa ideia retornar apenas uma coisa no módulo dessa forma deixando explicito o que será exposto publicamente. Ex:
+Podemos usar a keyword **default** para definir o que deve ser retornado por padrão no nosso módulo. É sempre uma boa ideia retornar apenas uma coisa no módulo dessa forma deixando explicito o que será exposto publicamente. Ex:
 
 ```javascript
 const comida = 'tapioca';
@@ -889,7 +887,7 @@ console.log(comida('pizza')); //pizza
 
 ### Parâmetros Rest
 
-Se tivermos uma função com um número de indefinido de parâmetros devemos fazer o seguinte em ES5:
+Se tivermos uma função com um número indefinido de parâmetros devemos fazer o seguinte em ES5:
 
 ```javascript
 function capitais() {
@@ -941,7 +939,7 @@ console.log(capitaisCompletas); // Array [ 'Pretória', 'Cidade do Cabo', 'Bloem
 
 ### Promises
 
-Em ES5 nós usávamos callbacks (funções passadas como argumento de outra função), isso podia gerar código assim:
+Em ES5 nós usávamos callbacks (funções passadas como argumento de outra função). Isso podia gerar código assim:
 
 ```javascript
 func1(function(value1) {
@@ -973,7 +971,7 @@ Diversas bibliotecas como a [bluebird](https://github.com/petkaantonov/bluebird)
 
 **Criando promises**
 
-Promises possuem dois **handlers** resolve(para quando a promise não retorna nenhuma exception) e reject (para quando a promise retorna uma exception):
+Promises possuem dois **handlers**: resolve(para quando a promise não retorna nenhuma exception) e reject (para quando a promise retorna uma exception):
 
 ```javascript
 import $ from 'jquery';
@@ -1004,11 +1002,11 @@ Promise.all(promises)
 	});
 ```
 
-> No exemplo anterior estamos usando o jQuery($) pra fazer requisições AJAX não se esqueça que podemos instalar bibliotecas externas com a ajuda do npm mesmo no front end. Para instalar o jQuery no nosso projeto webpack simplemente use **npm install jquery --save**
+> No exemplo anterior estamos usando o jQuery($) pra fazer requisições AJAX. Não se esqueça que podemos instalar bibliotecas externas com a ajuda do npm mesmo no front end. Para instalar o jQuery no nosso projeto webpack simplemente use **npm install jquery --save**
 
 ### Generators
 
-Outra forma de evitar o callback hell são os generators, eles são funções que podem ser "pausadas" durante sua execução.
+Outra forma de evitar o callback hell são os generators. Eles são funções que podem ser "pausadas" durante sua execução.
 
 ```javascript
 function* capitais() {
@@ -1063,7 +1061,7 @@ Veja que async é a maneira mais fácil e limpa de fazer códigos assíncronos c
 
 ## E agora?
 
-O passo mais importante para dominar uma nova linguagem é praticar, agora que você tem uma noção do básico de ECMAScript 6 tente converter projetos antigos ou crie projetos novos do zero, veja como você pode usar o ES6 no seu cotidiano para resolver problemas reais.
+O passo mais importante para dominar uma nova linguagem é praticar. Agora que você tem uma noção do básico de ECMAScript 6, tente converter projetos antigos ou crie projetos novos do zero. Veja como você pode usar o ES6 no seu cotidiano para resolver problemas reais.
 
 ## Se aprofundando
 
