@@ -58,7 +58,7 @@ Para instalar o webpack globalmente abra o seu terminal e digite:
 npm install webpack -g
 ```
 
-Crie um diretório para guardar o seu projeto e dentro dele, crie outro chamado **js** para guardar o javascript. Dentro do diretório principal do projeto inicie o node.js com:
+Crie um diretório para guardar o seu projeto e dentro dele, crie outro chamado **js** para guardar o JavaScript. Dentro do diretório principal do projeto inicie o node.js com:
 
 ```bash
 npm init
