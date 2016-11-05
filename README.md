@@ -2,7 +2,7 @@
 
 Em junho de 2015 a [Ecma International](https://en.wikipedia.org/wiki/Ecma_International) finalizou a sexta versão da linguagem de programação ECMAScript  (popularmente chamado de JavaScript). O objetivo deste guia é mostrar as principais features desse update junto com maneiras de configurar um ambiente de desenvolvimento que habilite seu uso em produção.
 
-> Sinta-se livre para contribuir com o projeto!Sugestões e PRs são sempre bem vindas!
+> Sinta-se livre para contribuir com o projeto! Sugestões e PRs são sempre bem vindas!
 
 ## Suporte Atual
 
@@ -304,7 +304,7 @@ foo();
 console.log(x); // ERRO: assignment to undeclared variable x
 ```
 
-Ok mas e o **var**?Bem, usando **var** nós podemos evitar o escopo global logo:
+Ok mas e o **var**? Bem, usando **var** nós podemos evitar o escopo global logo:
 
 ```javascript
 function foo() {
@@ -638,7 +638,7 @@ console.log(_nome.get(this)); // undefined
 
 ### Maps
 
-Maps (também conhecidos como hashmaps ou hashs) são uma estrutura de dados que armazena valores em um formato de chave(key) e valor(value). Ex:
+Maps (também conhecidos como hashmaps ou hashs) são uma estrutura de dados que armazena valores em um formato de chave (key) e valor (value). Ex:
 
 ```javascript
 'use strict';
