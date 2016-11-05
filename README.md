@@ -24,7 +24,7 @@ Como esta proposta foi dada quando já se falava sobre ES6, o novo nome não tev
 
 ## Testando o Babel
 
-Nós podemos brincar com o Babel online [nesta url](http://babeljs.io/repl/), o que é ótimo para ter uma certa noção do código que é gerado com a ferramenta, sem a necessidade de montar um ambiente de desenvolvimento que a suporte. Por exemplo no Babel online um código ES6 assim:
+Nós podemos brincar com o [Babel online](http://babeljs.io/repl/), o que é ótimo para ter uma certa noção do código que é gerado com a ferramenta, sem a necessidade de montar um ambiente de desenvolvimento que a suporte. Por exemplo no Babel online um código ES6 assim:
 
 ```javascript
 const hello = 'Hello world!';
