@@ -839,7 +839,7 @@ const preco = 1.0;
 function foo() {
 	return `tapioca da boa só ${preco} real`;
 }
-export defailt
+export default
 const api = {
 	comida,
 	foo
