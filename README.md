@@ -344,6 +344,8 @@ pi = 10; // ERRO
 
 Constantes facilitam bastante o entendimento de um código, já que nós podemos ter certeza que um determinado valor nunca vai mudar depois de ser definido. ***Use const sempre que possível.***
 
+> Algumas pessoas preferem seguir a tradição das linguagens inspiradas por C e escrever constantes em MACRO_CASE ao invés do camelCase usado em variáveis para deixar bem claro que o valores não podem ser alterados, pessoalmente eu acredito que como tentativas de alterar consts vão causar um erro de sintaxe não usar um padrão diferente é desnecessário ;)
+
 #### Maaass...não é tudo uma maravilha :(
 
 Constantes em ES6 **não são realmente imutáveis**. **É possível criar um objeto com const e alterar seus valores**:
