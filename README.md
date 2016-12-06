@@ -729,7 +729,7 @@ Em ES5 verificamos se uma string é substring de outra usando **indexOf**:
 
 ```javascript
 var comida = 'tapioca';
-var isSubstring = comida.indexOf('tap', -1) > -1; // se o resultado é > -1 que é substrig
+var isSubstring = comida.indexOf('tap', -1) > -1; // indexOf returna a posição de uma string em outra, se nada for achado ele retorna -1
 console.log(isSubstring); // true
 ```
 
