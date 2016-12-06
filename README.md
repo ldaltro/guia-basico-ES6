@@ -478,6 +478,22 @@ Ou ainda:
 const hey = () => console.log('hey');
 ```
 
+Usando a sintaxe `() => foo;` estamos implicitamente definindo o *return* da função:
+
+```javascript
+const nome = () => 'Lucas';
+
+console.log(nome());// Lucas
+```
+
+Se a função tiver um argumento os podemos omitir os parenteses:
+
+```javascript
+const falaAe = menssagem => menssagem;
+
+console.log(falaAe('Olá mundo!')); //Olá mundo!
+```
+
 **arrow functions e this**
 
 A melhor parte das arrow functions é que elas guardam o contexto this do seu valor léxico. Em ES5 nós tínhamos problemas do tipo:
