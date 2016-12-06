@@ -348,7 +348,7 @@ Constantes facilitam bastante o entendimento de um código, já que nós podemos
 
 #### Maaass...não é tudo uma maravilha :(
 
-Constantes em ES6 **não são realmente imutáveis**. **É possível criar um objeto com const e alterar seus valores**:
+Constantes em ES6 **não são realmente imutáveis**. Objetos criados com const podem ter seus valores alterados:
 
 ```javascript
 const paises = {
@@ -396,6 +396,26 @@ console.log(paises.africaDoSul.a); // Brasilia :(
 ```
 
 [A documentação da MDN possui uma gambiarra que resolve isso chamada deepFreeze()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze).
+
+### Immutable.js
+Para melhorar o suporte à imutabilidade no JavaScript o Facebook desenvolveu uma lib chamada [Immutable.js](https://facebook.github.io/immutable-js/). Com Immutable nós podemos usar uma série de estruturas de dados imutáveis.
+Ex.:
+```javascript
+const Immutable = require('immutable');
+const paises = Immutable.Map({
+	brasil: 'Rio de Janeiro',
+	eua: 'Washington',
+	portugal: 'Lisboa',
+});
+const novosPaises = paises.set('brasil', 'Brasilia');
+paises.get('brasil'); // 'Rio de Janeiro'
+novosPaises.get('brasil'); // 'Brasilia'
+```
+Obviamente, criar uma copia de um objeto inteiro sempre que quisermos fazer alguma alteração pode afetar a performance da nossa webapp. Para resolver isso o Immutable implementa [persistent data structures](https://en.wikipedia.org/wiki/Persistent_data_structure), basicamente toda vez que existe uma alteração o Immutable cria uma estrura nova apenas para a parte do objeto que foi alterada e insere uma referência da estrutura nova na estrutura antiga.Ex.:
+
+![Ilustração do funcionamento do Immutable](https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Purely_functional_tree_after.svg/438px-Purely_functional_tree_after.svg.png)
+
+Aprenda mais sobre Immutable [aqui](http://www.zsoltnagy.eu/introduction-to-immutable-js/) e [aqui](https://facebook.github.io/immutable-js/docs/#/)
 
 **let**
 
